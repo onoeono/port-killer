@@ -13,15 +13,15 @@ function App() {
   const [searchText, setSearchText] = useState('')
   const [protocol, setProtocol] = useState('all')
 
-  // const filteredData = data.filter((item: PortUsage) => {
-  //   const matchesSearch =
-  //     item.port.includes(searchText) ||
-  //     item.program.toLowerCase().includes(searchText.toLowerCase())
-  //   const matchesProtocol =
-  //     protocol === 'all' || item.protocol.toLowerCase() === protocol
-  //
-  //   return matchesSearch && matchesProtocol
-  // })
+  const filteredData = data.filter((item: PortUsage) => {
+    const matchesSearch =
+      item.port.includes(searchText) ||
+      item.program.toLowerCase().includes(searchText.toLowerCase())
+    const matchesProtocol =
+      protocol === 'all' || item.protocol.toLowerCase() === protocol
+
+    return matchesSearch && matchesProtocol
+  })
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -42,7 +42,7 @@ function App() {
           onSearch={setSearchText}
           onProtocolFilter={setProtocol}
         />
-        <PortTable loading={loading} data={data} />
+        <PortTable loading={loading} data={filteredData} />
       </Content>
     </Layout>
   )

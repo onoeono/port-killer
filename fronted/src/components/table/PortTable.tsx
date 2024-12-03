@@ -11,7 +11,7 @@ const PortTable = ({ loading, data }: PortTableProps) => {
   return (
     <Table
       columns={tableColumns}
-      dataSource={data.data}
+      dataSource={data}
       loading={loading}
       rowKey={(record) => `${record.protocol}-${record.port}-${record.pid}`}
       pagination={{
